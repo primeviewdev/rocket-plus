@@ -3,18 +3,18 @@
 
 	add_filter('use_block_editor_for_post','__return_false');
 
-	add_action( 'wp_print_styles',     'my_deregister_styles', 100 );
+	// add_action( 'wp_print_styles',     'my_deregister_styles', 100 );
 
-	function my_deregister_styles()    { 
-		wp_deregister_style( 'dashicons' ); 
-	}
+	// function my_deregister_styles()    { 
+	// 	wp_deregister_style( 'dashicons' ); 
+	// }
 
 
 	// Placeholder Function 
 	function rocketPlaceholder($atts){
 		// Default Values
 		$return_string = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. ';
-
+        $length = 0;
 		extract(shortcode_atts(array(
 			'length' => $length
 			), $atts));
@@ -34,7 +34,7 @@
 		$query = new WP_Query($post_ids);
 		if($query->have_posts()){
 			while($query->have_posts()){
-				echo '<ul>'
+				echo '<ul>';
 				if(has_shortcode( $query->post_content, '[placeholder]')){
 					echo '<li><a href="'.get_the_permalink().'">'.get_the_title().'</a></li>';
 				}
@@ -43,8 +43,6 @@
 		wp_reset_query();
 		echo '</ul>';
 	}
-	function rocketPlaceholderShortcode() { 
-		add_shortcode( 'placeholder', 'rocketPlaceholder' ); //[placeholder length="30"]
-	}
+	
 
 	

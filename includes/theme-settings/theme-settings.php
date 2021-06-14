@@ -20,7 +20,7 @@
 		echo '<div class="wrap">';
 			echo '<h1>Primeview Rocket Theme Options</h1>';
 
-			$tab_option = array ('Home','Social Media','Website Settings','Frontend Settings', 'Page Settings', 'Copyright Section', 'Add ons','Third Party Scripts','Optimizations');
+			$tab_option = array ('Home','Social Media','Website Settings','Frontend Settings', 'Page Settings', 'Copyright Section', 'Add ons','Third Party Scripts','Optimizations','Woocommerce Support');
 			$x = 0;
 			echo '<div class="tab">';
 			foreach ($tab_option as $option_setting) {
@@ -230,6 +230,10 @@
 							<td>Dark Mode Widget: </td>
 							<td><input type="checkbox" name="dark_mode" value="true" <?php if(get_option('dark_mode') == "true") echo "checked"; ?> /> <a target="_blank" href="https://darkmodejs.learn.uno/">Read Documentation</a> </td>
 						</tr>
+						<tr>
+							<td>QR Shortcode: </td>
+							<td><input type="checkbox" name="qr-shortcode-module" value="true" <?php if(get_option('qr-shortcode-module') == "true") echo "checked"; ?> /> <a target="_blank" href="https://darkmodejs.learn.uno/">Read Documentation</a> </td>
+						</tr>
 					</table>
 				</div>
 				<!-- Third Party Scripts -->
@@ -237,12 +241,22 @@
 					<h3> Third Party Scripts</h3>
 					<table class="rckt-table">
 						<tr>
-							<td>Third Party Scripts : </td>
-							<td><textarea rows="10" type="text" name="rocket_scripts" value="<?= esc_attr( get_option('rocket_scripts') )?>" ><?= esc_attr( get_option('rocket_scripts') )?></textarea></td>
+							<td>Before Closing <code>&lt;/head&gt;</code> : </td>
+							<td><textarea rows="10" type="text" name="before_closing_head_scripts" value="<?= esc_attr( get_option('before_closing_head_scripts') )?>" ><?= esc_attr( get_option('before_closing_head_scripts') )?></textarea></td>
 						</tr>
 						<tr>
+							<td>After Opening <code>&lt;body&gt;</code> : </td>
+							<td><textarea rows="10" type="text" name="after_opening_body_scripts" value="<?= esc_attr( get_option('after_opening_body_scripts') )?>" ><?= esc_attr( get_option('after_opening_body_scripts') )?></textarea></td>
+						</tr>
+						<tr>
+							<td>Before Closing <code>&lt;/body&gt;</code> : </td>
+							<td><textarea rows="10" type="text" name="before_closing_body_scripts" value="<?= esc_attr( get_option('before_closing_body_scripts') )?>" ><?= esc_attr( get_option('before_closing_body_scripts') )?></textarea></td>
+						</tr>
+					</table>						
+					<table class="rckt-table">	
+						<tr>
 							<td>Google Font link : </td>
-							<td class="w-25"><input type="text" name="google-font-import" value="<?= esc_attr( get_option('google-font-import') )?>" placeholder="https://fonts.google.com..." /></td>
+							<td><input type="text" name="google-font-import" value="<?= esc_attr( get_option('google-font-import') )?>" placeholder="https://fonts.google.com..." /></td>
 						</tr>
 					</table>
 				</div>
@@ -281,6 +295,20 @@
 						</tr>
 					</table>
 				</div>
+
+				<!-- WooCommerce Support -->
+				<div id="9" class="tabcontent">
+					<h3>Woocommerce Settings Support</h3>
+					<?
+					if(is_woocommerce_activated()){
+						rocket_theme_wc_options();
+					} else {
+						echo 'No Woocommerce Plugin Detected.';
+					}
+					?>
+				</div>				
+
+
 				<div class="copyright"><p>© copyright 2021<a href="https://primeview.com" target="_blank">  Primeview</a></p></div>
 				<?= submit_button(); ?>
 			</form>
@@ -323,12 +351,18 @@
 	 */
 	function rocketThemeSettings() {
 
+		/* Default values */
+		$copyright = '<p>[year] </p><p>All Rights Reserved.</p>';
+		$developer = '<p>Created by One of the Leading Phoenix Web Design Firms <a href="//primeview.com/" target="_blank">Primeview</a></p><p>Optimized by Phoenix Arizona SEO Company <a href="//optimizex.com/" target="_blank">OptimizeX</a></p>';
+
 		add_option( 'header-bgcolor', '#1e73be' );
 		add_option( 'page-bgcolor', '#FFFFFF' );
 		add_option( 'footer-bgcolor', '#8E8A89' );
 		add_option( 'header-template', 'left' );
 		add_option( 'footer-template', 'columns' );
 		add_option( 'mobile-breakpoint', '800' );
+		add_option('copyright', $copyright);
+		add_option('developer', $developer);
 		
 		register_setting( 'option-group', 'facebook' );
 		register_setting( 'option-group', 'twitter' );
@@ -352,7 +386,11 @@
 		register_setting( 'option-group', 'loader' );
 		register_setting( 'option-group', 'copyright' );
 		register_setting( 'option-group', 'developer' );
-		register_setting( 'option-group', 'rocket_scripts' );
+
+		register_setting( 'option-group', 'before_closing_head_scripts' );
+		register_setting( 'option-group', 'before_closing_body_scripts' );
+		register_setting( 'option-group', 'after_opening_body_scripts' );
+
 		register_setting( 'option-group', 'google-font-import' );
 		register_setting( 'option-group', 'footer_jQuery' );
 		register_setting( 'option-group', 'rocket_optimizations' );
@@ -373,8 +411,11 @@
 		register_setting( 'option-group', 'default-banner' );
 		register_setting( 'option-group', 'post-placeholder' );
 
+		register_setting( 'option-group', 'qr-shortcode-module' );
 
-
+		if(is_woocommerce_activated()){
+			rocket_woocommerce();
+		}
 	}
 
 	function dynamicCSS() {
@@ -384,13 +425,13 @@
 	?>
 		<style type="text/css">
 			.site-header, nav.navbar {
-				background-color:<?php echo $header; ?> !important;
+				background-color:<?php echo $header; ?>;
 			}
 			footer, .site_main_footer, .site_copyright {
-				background-color:<?php echo $footer; ?> !important;
+				background-color:<?php echo $footer; ?>;
 			}
 			.site{
-				background-color:<?php echo $page; ?> !important;
+				background-color:<?php echo $page; ?>;
 			}
 		</style>
 	<?php

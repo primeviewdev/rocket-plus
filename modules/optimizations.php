@@ -55,17 +55,17 @@ add_action( 'wp_enqueue_scripts', 'pv_disable_woocommerce_block_styles');
 
 
 
-function add_rel_preload($html, $handle, $href, $media) {
-    if(get_option('rel_preload')){
-        if (is_admin())
-            return $html;
-        $html = <<<EOT
-        <link rel='preload' as='style' onload="this.onload=null;this.rel='stylesheet'" id='$handle' href='$href' type='text/css' media='all' />
-        EOT;
-            return $html;
-    }   
-}
-add_filter( 'style_loader_tag', 'add_rel_preload', 10, 4 );
+// function add_rel_preload($html, $handle, $href, $media) {
+//     if(get_option('rel_preload')){
+//         if (is_admin())
+//             return $html;
+//         $html = <<<EOT
+//         <link rel='preload' as='style' onload="this.onload=null;this.rel='stylesheet'" id='$handle' href='$href' type='text/css' media='all' />
+//         EOT;
+//             return $html;
+//     }   
+// }
+// add_filter( 'style_loader_tag', 'add_rel_preload', 10, 4 );
 
 
 
@@ -75,18 +75,18 @@ add_filter( 'style_loader_tag', 'add_rel_preload', 10, 4 );
 //  * @param $handle
 //  * @return string|string[]
 //  */
-function add_async_attribute($tag, $handle) {
-    if(get_option('rocket_optimizations') == "true"){
-        if(get_option( 'async_scripts' )){
-            // add script handles to the array below
-            $scripts_to_async = ['my-js-handle', 'another-handle'];
-            foreach($scripts_to_async as $async_script) {
-                if ($async_script === $handle) {
-                    return str_replace(' src', ' async="async" src', $tag);
-                }
-            }
-            return $tag;
-        }  
-    }
-}
-add_filter('script_loader_tag', 'add_async_attribute', 10, 2);
+// function add_async_attribute($tag, $handle) {
+//     if(get_option('rocket_optimizations') == "true"){
+//         if(get_option( 'async_scripts' )){
+//             // add script handles to the array below
+//             $scripts_to_async = ['my-js-handle', 'another-handle'];
+//             foreach($scripts_to_async as $async_script) {
+//                 if ($async_script === $handle) {
+//                     return str_replace(' src', ' async="async" src', $tag);
+//                 }
+//             }
+//             return $tag;
+//         }  
+//     }
+// }
+// add_filter('script_loader_tag', 'add_async_attribute', 10, 2);

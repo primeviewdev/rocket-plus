@@ -33,7 +33,12 @@ function rocketStyle(){
 			$rocket_desktop_breakpoint = strval(intval(get_option('mobile-breakpoint'))+1);
 			wp_enqueue_style( 'responsive-desktop',  get_stylesheet_directory_uri(). '/assets/css/responsive-desktop.css', array() , null , 'screen and (min-width: '. $rocket_desktop_breakpoint .'px)', 12 );
 			wp_enqueue_style( 'responsive-mobile',  get_stylesheet_directory_uri(). '/assets/css/responsive-mobile.css', array() , null , 'screen and (max-width: '. get_option('mobile-breakpoint') .'px)', 13 );
-		}					
+		}	
+		// Woocommerce Styles
+		if(is_woocommerce_activated()){
+			wp_enqueue_style( 'rocket-wc-styles', get_template_directory_uri().'/assets/css/woocommerce/style.css');
+			wp_enqueue_style( 'rocket-wc-styles-responsive', get_template_directory_uri().'/assets/css/woocommerce/responsive.css');
+		}				
 		
 }
 
@@ -77,6 +82,10 @@ function rocketScript(){
 		wp_enqueue_script( 'rocket-dark-mode', get_template_directory_uri() . '/assets/js/darkmode/darkmode-js.min.js',array());
 		wp_enqueue_script( 'rocket-dark-mode-custom', get_template_directory_uri() . '/assets/js/dark-mode-custom.js',array());
 	}
+	// Woocommerce Styles
+	if(is_woocommerce_activated()){
+		wp_enqueue_script( 'rocket-woocommerce-scripts', get_template_directory_uri() . '/assets/js/woocommerce/wc-js.js',array());
+	}			
 
 	$css = '';
 	if(get_option('scroll-to-top')) {
@@ -156,23 +165,3 @@ function rocket_upload_mimes($mimes) {
 	return $mimes;
 }
 add_filter('upload_mimes', 'rocket_upload_mimes');
-
-/**
- * Woocommerce Support
- */
-function rocket_add_woocommerce_support() {
-	add_theme_support( 'woocommerce', array(
-        'product_grid'          => array(
-            'default_rows'    => 4,
-            'min_rows'        => 2,
-            'max_rows'        => 8,
-            'default_columns' => 3,
-            'min_columns'     => 2,
-            'max_columns'     => 6,
-        ),
-    ) );
-    add_theme_support('wc-product-gallery-zoom');
-    add_theme_support('wc-product-gallery-lightbox');
-    add_theme_support('wc-product-gallery-slider');
-}
-add_action( 'after_setup_theme', 'rocket_add_woocommerce_support' );

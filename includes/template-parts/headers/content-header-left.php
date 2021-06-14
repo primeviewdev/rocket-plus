@@ -4,7 +4,7 @@
 			<?php dynamic_sidebar('site-logo'); ?>
 		</div>
 		<div class="col-md-8">
-			<nav id="nav-menu" class="navbar navbar-expand-lg navbar-dark bg-dark">
+			<nav id="nav-menu" class="navbar navbar-expand-lg">
 				<?php echo do_shortcode('[rocketmenu]'); ?>
 			</nav>
 		</div>

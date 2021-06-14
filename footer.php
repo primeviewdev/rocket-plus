@@ -46,5 +46,8 @@
 				echo get_option("rocket_scripts");		
 			}
 		?>
+		<!-- Before Closing Body -->
+		<?php echo get_option('before_closing_body_scripts');?>
+		<!-- Before Closing Body Scripts End -->
 	</body>
 </html>

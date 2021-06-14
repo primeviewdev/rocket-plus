@@ -9,7 +9,7 @@
 						'theme_location'    => 'primary',
 						'depth'             => 4,
 						'container'         => 'div',
-						'container_class'   => 'navbar-collapse desktop',
+						'container_class'   => 'navbar-collapse desktop collapse',
 						'container_id'      => 'bs-navbar-collapse',
 						'menu_class'        => 'nav navbar-nav',
 						'fallback_cb'       => 'wp_bootstrap_navwalker::fallback',

@@ -25,9 +25,19 @@
 <?php echo get_option('rocket_critical_css');?>
 </style>
 <!-- Critical CSS End -->
+
 <?php wp_head(); ?>
+
+<!-- Before Closing Head -->
+<?php echo get_option('before_closing_head_scripts');?>
+<!-- Before Closing Head Scripts End -->
 </head>
 <body <?php body_class(); $headerTemplate = get_option('header-template');?> >
+
+<!-- After Opening Body Scripts -->
+<?php echo get_option('after_opening_body_scripts');?>
+<!-- After Opening Body Scripts End -->
+
 <?php if(get_option('preloader')): ?>
 	<div class="loading">
 		<div class="spinner">
