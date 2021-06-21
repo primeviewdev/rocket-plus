@@ -47,6 +47,13 @@
 		</div>
 	</div>
 <?php endif; ?>
+	
+	<?php if(get_option('rocket-mobile-menu')): ?>
+		<!-- Rocket Mobile Menu -->
+		<?php dynamic_sidebar( 'rocket-mobile-menu' ); ?>
+		<!-- Rocket Mobile Menu End -->
+	<?php endif; ?>
+	
 	<div id="page" class="hfeed ">
 		<div class="site-header">
 			<?php

@@ -25,7 +25,7 @@
 		register_sidebar( array(
 		   'name' => __( 'Header', 'rocket' ),
 		   'id' => 'header-widget',
-		   'description' => __( 'Contents of the Header', 'rocket' ),
+		   'description' => __( 'Contents of the Header. Shortcodes [siteinfo type=url/name]', 'rocket' ),
 		   'before_widget' => '<div id="%1$s" class="widget %2$s">',
 		   'after_widget' => '</div>',
 		) );
