@@ -97,11 +97,11 @@
 						</tr>
 						<tr>
 							<td>Address 1: </td>
-							<td><input placeholder="" type="text" name="address1" value="<?= esc_attr( get_option('address1') ) ?>" /> </td>
+							<td><input placeholder="1717 N. 77th ST. Suite 4 Scottsdale, AZ 85257" type="text" name="address1" value="<?= esc_attr( get_option('address1') ) ?>" /> </td>
 						</tr>
 						<tr>
 							<td>Address 2: </td>
-							<td><input placeholder="(000)-000-xxxx" type="text" name="address2" value="<?= esc_attr( get_option('address2') ) ?>" /> </td>
+							<td><input placeholder="615 Piikoi St, Suite 1503 Honolulu, Hawaii 96814" type="text" name="address2" value="<?= esc_attr( get_option('address2') ) ?>" /> </td>
 						</tr>
 						<tr>
 							<td>Email Address: </td>
@@ -123,8 +123,7 @@
 							<td><input placeholder="Admin Backend Favicon" type="text" name="admin_favicon" value="<?= esc_attr( get_option('admin_favicon') )?>" /></td>
 						</tr>
 					</table>
-				</div>
-			
+				</div>			
 			
 				<!-- Frontend settings  -->
 				<div id="3" class="tabcontent">
@@ -146,12 +145,23 @@
 					<h3> Responsive Settings</h3>
 					<table class="rckt-table">
 						<tr>
-							<td>Mobile Breakpoint in PX ( Default: 800px )</td>
-							<td><input type="text" name="mobile-breakpoint" value="<?= esc_attr( get_option('mobile-breakpoint') ) ?>" /> px </td>
+							<td class="w-25">Mobile Breakpoint in PX ( Default: 800px )</td>
+							<td class="w-25"><input type="text" name="mobile-breakpoint" value="<?= esc_attr( get_option('mobile-breakpoint') ) ?>" /> px </td>
+						</tr>
+					</table>
+					<h3>Rocket Mobile Menu Settings</h3>
+					<table class="rckt-table">	
+						<tr>
+							<td class="w-25">Enable Rocket Mobile Menu</td>
+							<td class="w-25"><input type="checkbox" name="rocket-mobile-menu" value="true" <?php if(get_option('rocket-mobile-menu') == "true") echo "checked"; ?> /></td>							
+						</tr>
+						<tr>
+						<td class="w-25">Mobile Menu Top Offset</td>
+							<td class="w-25"><input type="text" name="mobile-top-offset" value="<?= esc_attr( get_option('mobile-top-offset') ) ?>" placeholder="30px" /> px </td>
 						</tr>
 					</table>
 				</div>
-			
+				
 				<!-- Copyright settings -->
 				<div id="4" class="tabcontent">
 					<h3> Page Settings</h3>
@@ -403,7 +413,10 @@
 		register_setting( 'option-group', 'header-bgcolor' );
 		register_setting( 'option-group', 'page-bgcolor' );
 		register_setting( 'option-group', 'footer-bgcolor' );
+		register_setting( 'option-group', 'rocket-mobile-menu' );
 		register_setting( 'option-group', 'mobile-breakpoint');
+		register_setting( 'option-group', 'mobile-top-offset');
+		
 		register_setting( 'option-group', 'header-template' );
 		register_setting( 'option-group', 'footer-template' );
 		register_setting( 'option-group', 'scroll-to-top' );
@@ -422,6 +435,7 @@
 		$header = get_option('header-bgcolor');
 		$footer = get_option('footer-bgcolor');
 		$page   = get_option('page-bgcolor');
+		$mm_offset = get_option('mobile-top-offset');
 	?>
 		<style type="text/css">
 			.site-header, nav.navbar {
@@ -433,6 +447,11 @@
 			.site{
 				background-color:<?php echo $page; ?>;
 			}
+			div#rocket-mobile-menu {
+				top: <?php echo $mm_offset ?>;
+				position: fixed;
+    			left: 100%;
+			}
 		</style>
 	<?php
 
@@ -443,6 +462,9 @@
 		$optionJS = get_option('header-template');
 	?>
 
-	<?php
+	<?
 	}
-	?>
+	
+	
+
+	

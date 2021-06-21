@@ -7,13 +7,18 @@
 	// require_once('modules/custom-sidebar-widget.php');
 	require_once('modules/custom-module.php');
 	require_once('modules/optimizations.php');
+		
 	
+
 	if(is_woocommerce_activated()){
 		require_once('modules/woocommerce-module.php');
 	}
 
 	if(get_option('qr-shortcode-module')){
 		require_once('modules/qr-shortcode-module.php');
+	}
+	if(get_option('rocket-mobile-menu')){
+		require_once('modules/mobile-menu.php');
 	}
 
 	function is_woocommerce_activated() {
