@@ -32,16 +32,109 @@
 			<!-- Home -->
 			<div id="0" class="tabcontent active">
 					<div class="rckt-home">
-						<img class="rckt-image-center" src='<?= get_template_directory_uri() ?>/assets/images/banner.png'>
-						<h2>Social Media Shortcode</h2>
-						<p><b>Shortcode :</b> [social-media]</p>
-						<p><b>Parameters : </b> mode = facebook , twitter , google_plus , linkedin , youtube , instagram , pinterest </p>
-						<p><b>Example : </b> [social-media mode="facebook"]</p>
-						<h2>Other Shortcodes</h2>
-						<p><b>Get Developer Part : </b> [developer] </p>
-						<p><b>Get Copyright Part : </b> [copyright] </p>
-						<p><b>Get Year Part : </b>[year]</p>
+						<img src='<?= get_template_directory_uri() ?>/assets/images/banner.png'>
 					</div>
+					<h2>Theme Shortcodes</h2>
+					<br>
+					<h3></h3>
+					<table>
+						<tr>
+							<td>Navigation Menu: </td>
+							<td><code>[rocketmenu]</code></td>
+						</tr>
+						<tr>
+							<td>Developer Section: </td>
+							<td><code>[developer]</code></td>
+						</tr>
+						<tr>
+							<td>Copyright Section: </td>
+							<td><code>[copyright]</code></td>
+						</tr>
+					</table>
+					<br>
+
+					<h3>Blog Shortcodes</h3>
+					<table>
+						<tr>
+							<td>Recent Posts:</td>
+							<td><code>[recent-posts post=5 template=news ]</code></td>
+						</tr>
+					</table>
+
+					<br>
+					<h3>Site Information Shortcodes</h3>
+					<table>
+						<tr>
+							<td>Site URL: </td>
+							<td><code>[siteinfo type=url]</code></td>
+						</tr>
+						<tr>
+							<td>Site Name: </td>
+							<td><code>[siteinfo type=name]</code></td>
+						</tr>
+						<tr>
+							<td>Phone Number: </td>
+							<td><code>[phonenumber]</code></td>
+						</tr>
+						<tr>
+							<td>Address # 1: </td>
+							<td><code>[address1]</code></td>
+						</tr>
+						<tr>
+							<td>Address # 2: </td>
+							<td><code>[address2]</code></td>
+						</tr>
+						<tr>
+							<td>Email Address: </td>
+							<td><code>[emailaddress]</code></td>
+						</tr>
+					</table>
+
+					<br>
+					<h3>Social Media Shortcodes</h3>
+					<table>
+						<tr>
+							<td>Facebook:</td>
+							<td><code>[social-media mode="facebook"]</code></td>
+						</tr>
+						<tr>
+							<td>Twitter:</td>
+							<td><code>[social-media mode="twitter"]</code></td>
+						</tr>
+						<tr>
+							<td>Google Plus:</td>
+							<td><code>[social-media mode="google_plus"]</code></td>
+						</tr>
+						<tr>
+							<td>LinkedIn: </td>
+							<td><code>[social-media mode="linkedin"]</code></td>
+						</tr>
+						<tr>
+							<td>Youtube: </td>
+							<td><code>[social-media mode="youtube"]</code></td>
+						</tr>
+						<tr>
+							<td>Instagram: </td>
+							<td><code>[social-media mode="instagram"]</code></td>
+						</tr>
+						<tr>
+							<td>Pinterest:</td>
+							<td><code>[social-media mode="pinterest"]</code></td>
+						</tr>
+					</table>
+
+					<br>
+					<h3>Useful Shortcodes</h3>
+					<table>
+						<tr>
+							<td>Placeholder Texts:</td>
+							<td><code>[placeholder length=100]</code></td>
+						</tr>
+						<tr>
+							<td>Current Year:</td>
+							<td><code>[year]</code></td>
+						</tr>
+					</table>
 				</div>
 			<form method="post" enctype="multipart/form-data" action="options.php">
 			<?php
