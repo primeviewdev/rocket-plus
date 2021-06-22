@@ -9,6 +9,8 @@
 	require_once('includes/theme-settings/shortcodes.php');
 	require_once('includes/theme-settings/required-plugins.php');
 	require_once('includes/theme-settings/backend.php');
+	// Widgets
+	require_once('modules/widgets/accordion.php');
 	// Modules
 	require_once('modules/custom-module.php');
 	require_once('modules/optimizations.php');
@@ -93,9 +95,6 @@
 		// Shortcodes
 		rocketShortcodes();
 	}	
-	
-	
-
 	
 	/** 
 	 * Initialize Theme

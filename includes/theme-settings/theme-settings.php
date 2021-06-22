@@ -36,7 +36,7 @@
 					</div>
 					<h2>Theme Shortcodes</h2>
 					<br>
-					<h3></h3>
+					<h3>Template Shortcodes</h3>
 					<table>
 						<tr>
 							<td>Navigation Menu: </td>
