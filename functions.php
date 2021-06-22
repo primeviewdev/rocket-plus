@@ -10,7 +10,7 @@
 	require_once('includes/theme-settings/required-plugins.php');
 	require_once('includes/theme-settings/backend.php');
 	// Widgets
-	require_once('modules/widgets/accordion.php');
+	require_once('modules/widgets/collapsible.php');
 	// Modules
 	require_once('modules/custom-module.php');
 	require_once('modules/optimizations.php');
