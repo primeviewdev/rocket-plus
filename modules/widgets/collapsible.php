@@ -35,7 +35,7 @@ class collapsible_widget extends WP_Widget {
         echo '</div>';
         echo '<div id="'.$identifier.'" class="collapse">';
             echo '<div class="card-content">';  
-            echo $content; 
+            echo apply_filters('the_content',$content); 
             echo '</div>';            
         echo '</div>';
         
