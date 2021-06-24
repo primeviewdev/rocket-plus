@@ -45,6 +45,7 @@
 		) );
 	}
 
+
 	/* Register Sidebars */
 	function rocketSidebarRegister(){
 		add_action( 'widgets_init', 'rocketHeader' );	 	
