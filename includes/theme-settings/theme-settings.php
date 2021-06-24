@@ -373,30 +373,30 @@
 							<td><textarea rows="10" type="text" name="rocket_critical_css" value="<?= esc_attr( get_option('rocket_critical_css') )?>" ><?= esc_attr( get_option('rocket_critical_css') )?></textarea></td>
 						</tr>
 					</table>
-					<span>Enable Optimizations: </span>
-					<input type="checkbox" name="rocket_optimizations" value="true" <?php if(get_option('rocket_optimizations') == "true") echo "checked"; ?> />
-					<table class="rckt-table optimizations" <?php optimizations_table(); ?>>
+					<!-- <span>Enable Optimizations: </span>
+					<input type="checkbox" name="rocket_optimizations" value="true" < ?php if(get_option('rocket_optimizations') == "true") echo "checked"; ?> />
+					<table class="rckt-table optimizations" < ?php optimizations_table(); ?>>
 						<tr>
 							<td>Optimize Theme Scripts & Styles</td>
-							<td><input type="checkbox" name="optimize_theme_scripts_styles" value="true" <?php if(get_option('optimize_theme_scripts_styles') == "true") echo "checked"; ?> /></td>
+							<td><input type="checkbox" name="optimize_theme_scripts_styles" value="true" < ?php if(get_option('optimize_theme_scripts_styles') == "true") echo "checked"; ?> /></td>
 						</tr>
 						<tr>
 							<td>Move jQuery to the footer</td>
-							<td><input type="checkbox" name="footer_jQuery" value="true" <?php if(get_option('footer_jQuery') == "true") echo "checked"; ?> /></td>
+							<td><input type="checkbox" name="footer_jQuery" value="true" < ?php if(get_option('footer_jQuery') == "true") echo "checked"; ?> /></td>
 						</tr>
 						<tr>
 							<td>Add rel on Preload</td>
-							<td><input type="checkbox" name="rel_preload" value="true" <?php if(get_option('rel_preload') == "true") echo "checked"; ?> /></td>
+							<td><input type="checkbox" name="rel_preload" value="true" < ?php if(get_option('rel_preload') == "true") echo "checked"; ?> /></td>
 						</tr>
 						<tr>
 							<td>Add async attribute on scripts</td>
-							<td><input type="checkbox" name="async_scripts" value="true" <?php if(get_option('async_scripts') == "true") echo "checked"; ?> /></td>
+							<td><input type="checkbox" name="async_scripts" value="true" < ?php if(get_option('async_scripts') == "true") echo "checked"; ?> /></td>
 						</tr>
 						<tr>
 							<td>Disable WooCommerce block styles (front-end)</td>
-							<td><input type="checkbox" name="disable_wc_blk_styles" value="true" <?php if(get_option('disable_wc_blk_styles') == "true") echo "checked"; ?> /></td>
+							<td><input type="checkbox" name="disable_wc_blk_styles" value="true" < ?php if(get_option('disable_wc_blk_styles') == "true") echo "checked"; ?> /></td>
 						</tr>
-					</table>
+					</table> -->
 				</div>
 
 				<!-- WooCommerce Support -->
@@ -496,12 +496,12 @@
 
 		register_setting( 'option-group', 'google-font-import' );
 		register_setting( 'option-group', 'footer_jQuery' );
-		register_setting( 'option-group', 'rocket_optimizations' );
-		register_setting( 'option-group', 'optimize_theme_scripts_styles' );
-		register_setting( 'option-group', 'rocket_critical_css' );
-		register_setting( 'option-group', 'rel_preload' );
-		register_setting( 'option-group', 'async_scripts' );
-		register_setting( 'option-group', 'disable_wc_blk_styles' );
+		// register_setting( 'option-group', 'rocket_optimizations' );
+		// register_setting( 'option-group', 'optimize_theme_scripts_styles' );
+		// register_setting( 'option-group', 'rocket_critical_css' );
+		// register_setting( 'option-group', 'rel_preload' );
+		// register_setting( 'option-group', 'async_scripts' );
+		// register_setting( 'option-group', 'disable_wc_blk_styles' );
  
 		register_setting( 'option-group', 'header-bgcolor' );
 		register_setting( 'option-group', 'page-bgcolor' );

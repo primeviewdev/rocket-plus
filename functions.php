@@ -13,7 +13,7 @@
 	require_once('modules/widgets/collapsible.php');
 	// Modules
 	require_once('modules/custom-module.php');
-	require_once('modules/optimizations.php');
+	// require_once('modules/optimizations.php'); Not yet stable
 	// QR Shortcode Module
 	if(get_option('qr-shortcode-module')){
 		require_once('modules/qr-shortcode-module.php');
