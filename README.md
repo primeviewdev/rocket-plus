@@ -37,14 +37,16 @@ Theme Changes:
 - Compatible up to the latest version of WP
 
 ## Contributors
-* Zekinah Lecaros
 * Reander Agulto
 * Janfred Magnaye
 * Jester Aguilar
-* Jearson Carillo
+* Yardi Fox
+
 
 ## Special Thanks to
 * John Perri Cruz
+* Jearson Carillo
+* Zekinah Lecaros
 
 ## License
 
