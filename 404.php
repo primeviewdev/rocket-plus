@@ -11,7 +11,7 @@ get_header(); ?>
                 <div class="row justify-content-center" role="main">
                     <div class="col-md-6 text-center ">
                         <p>We're sorry, but the page you requested was not found...</p>
-                        <p><a href="<?php echo get_site_url(); ?>" class="btn btn-primary">Back to Homepage</a> </p>
+                        <p><a href="<?php esc_url( home_url( '/' ) ); ?>" class="btn btn-primary">Back to Homepage</a> </p>
                         <p></p>
                     </div>
                 </div>
