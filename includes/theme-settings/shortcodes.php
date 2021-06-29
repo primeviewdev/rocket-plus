@@ -85,7 +85,7 @@ function siteInfoShortcode( $atts ){
     $return_string = '';
 
     if($type=='url'){
-        $return_string = get_site_url();;
+        $return_string = home_url();;
     }
     if($type=='name'){
         $return_string = get_bloginfo();;

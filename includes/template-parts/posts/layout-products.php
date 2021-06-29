@@ -6,8 +6,6 @@
     } ?>
     <h2><a href="<?php echo get_the_permalink(); ?>"><?php echo get_the_title(); ?></a></h2>
     <div class="archieve-action">
-        <!-- <a class="btn btn-primary" href="< ?php echo get_the_permalink(); ?>"><span class="glyphicon glyphicon-search"></span> Read more</a> -->
         <a href="?add-to-cart=<?php echo $id; ?>" data-quantity="1" class="btn btn-primary button product_type_simple add_to_cart_button ajax_add_to_cart" data-product_id="59" data-product_sku="" aria-label="Add “<?php the_title(); ?>” to your cart" rel="nofollow">Add to cart</a>
-        <!-- <a  href="< ?php echo get_bloginfo('url');?>/checkout/?add-to-cart=< ?php echo get_the_ID(); ?>">Add to cart</a> -->
     </div>
 </div>
